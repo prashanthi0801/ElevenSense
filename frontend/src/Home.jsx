@@ -6,6 +6,31 @@ import ScrollStack, { ScrollStackItem } from "./components/ScrollStack";
 import "./App.css";
 
 export default function Home() {
+
+  // HOW IT WORKS STEPS
+  const steps = [
+    {
+      num: "1",
+      title: "Set Your Interests",
+      desc: "Choose topics and sources you care about."
+    },
+    {
+      num: "2",
+      title: "AI Processes",
+      desc: "Our AI analyzes and summarizes the latest stories."
+    },
+    {
+      num: "3",
+      title: "Get Summaries",
+      desc: "Receive concise, actionable news instantly."
+    },
+    {
+      num: "4",
+      title: "Personalize",
+      desc: "Your feed learns and adapts to your preferences."
+    }
+  ];
+
   return (
     <div className="app">
 
@@ -73,7 +98,7 @@ export default function Home() {
 
       <div style={{ height: "25vh" }} />
 
-      {/* FEATURES TITLE (Animated) */}
+      {/* FEATURES HEADING */}
       <ScrollFloat
         animationDuration={1.4}
         ease="back.inOut(1.8)"
@@ -81,7 +106,7 @@ export default function Home() {
         scrollEnd="bottom 65%"
         stagger={0.1}
       >
-        Features
+        <h2 className="section-title">Features</h2>
       </ScrollFloat>
 
       <div style={{ height: "20vh" }} />
@@ -104,7 +129,33 @@ export default function Home() {
         </ScrollStackItem>
       </ScrollStack>
 
+      <div style={{ height: "25vh" }} />
+
+      {/* HOW IT WORKS SECTION */}
+      <section className="how-it-works-section">
+        <div className="how-header">
+          <h2 className="section-title">How It Works</h2>
+          <p className="section-subtitle">Simple. Smart. Seamless.</p>
+        </div>
+
+        <div style={{ height: "8vh" }} />
+
+        <div className="steps-container">
+          {steps.map((step, i) => (
+            <div key={i} className="step-item">
+              <div className="step-number">{step.num}</div>
+              <h4 className="step-title">{step.title}</h4>
+              <p className="step-desc">{step.desc}</p>
+
+              {/* Connectors between steps */}
+              {i < steps.length - 1 && <div className="step-connector"></div>}
+            </div>
+          ))}
+        </div>
+      </section>
+
       <div style={{ height: "70vh" }} />
     </div>
   );
 }
+
